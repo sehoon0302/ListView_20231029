@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(StudentData("김학생",2000,"010-4567-8901"))
         mStudentList.add(StudentData("대학생",1997,"010-5678-9012"))
         mStudentList.add(StudentData("머학생",1994,"010-6789-0123"))
+        mStudentList.add(StudentData("전학생",2006,))
 
         //어탭터 변수도 객체 생성
         mStudentAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList )

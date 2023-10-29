@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             val clickedStd = mStudentList[positon]
 
             Toast.makeText(this, "${clickedStd.name} : ${clickedStd.phoneNum}", Toast.LENGTH_SHORT).show()
+            //
         }
     }
 }

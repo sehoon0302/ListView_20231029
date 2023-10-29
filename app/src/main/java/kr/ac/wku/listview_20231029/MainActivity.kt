@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
             //어뎁터에게 통보
             mStudentAdapter.notifyDataSetChanged()
+            //
 
             //LongClick 이벤트는 Bool 타입의 리턴값을 받도록 되어있음.
 

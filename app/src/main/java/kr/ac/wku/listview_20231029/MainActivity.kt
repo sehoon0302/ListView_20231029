@@ -1,8 +1,10 @@
 package kr.ac.wku.listview_20231029
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import kr.ac.wku.listview_20231029.adapters.StudentAdapter
 import kr.ac.wku.listview_20231029.databinding.ActivityMainBinding
@@ -47,12 +49,25 @@ class MainActivity : AppCompatActivity() {
 
         //한명의 학생을 오래 클릭하면 -> 해당학생 삭제
         binding.studentListView.setOnItemLongClickListener { adapterView, view, positon, l ->
-            //오래 클릭된 학생 -> (목록에서) 삭제
-            mStudentList.removeAt(positon)  //내용물 변경 발생
+            val std = mStudentList[positon]
 
-            //어뎁터에게 통보
-            mStudentAdapter.notifyDataSetChanged()
-            //
+            //경고창을 띄워서 확인 받고 나서
+            val alert = AlertDialog.Builder(this)
+
+            alert.setTitle("삭제 확인")
+            alert.setMessage("정말 ${std.name}학생을 삭제하겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+                //삭제 기능은 확인 버튼이 눌릴때 실행
+
+                //오래 클릭된 학생 -> (목록에서) 삭제
+                mStudentList.removeAt(positon)  //내용물 변경 발생
+
+                //어뎁터에게 통보
+                mStudentAdapter.notifyDataSetChanged()
+            })
+            alert.setNegativeButton("취소",null)
+            alert.show()
+
 
             //LongClick 이벤트는 Bool 타입의 리턴값을 받도록 되어있음.
 

@@ -17,7 +17,7 @@ class StudentData( val name: String, val birthYear: Int, val phoneNum: String) {
 
     //void 대체 연습 : 폰번을 - 제외하고 주는 함수
     fun getSimplePhoneNum(){    //리턴타입 명시 X : 리턴 없다. (JAVA의 void)
-        Log.d("학생데이터", this.phoneNum.replace("-",""))
+        Log.d("학생데이터", this.phoneNum.replace("-",""))입
     }
 
 }

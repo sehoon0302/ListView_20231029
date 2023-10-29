@@ -43,7 +43,19 @@ class MainActivity : AppCompatActivity() {
             val clickedStd = mStudentList[positon]
 
             Toast.makeText(this, "${clickedStd.name} : ${clickedStd.phoneNum}", Toast.LENGTH_SHORT).show()
-            //
+        }
+
+        //한명의 학생을 오래 클릭하면 -> 해당학생 삭제
+        binding.studentListView.setOnItemLongClickListener { adapterView, view, positon, l ->
+            //오래 클릭된 학생 -> (목록에서) 삭제
+            mStudentList.removeAt(positon)  //내용물 변경 발생
+
+            //어뎁터에게 통보
+            mStudentAdapter.notifyDataSetChanged()
+
+            //LongClick 이벤트는 Bool 타입의 리턴값을 받도록 되어있음.
+
+            return@setOnItemLongClickListener true
         }
     }
 }
